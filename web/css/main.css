@@ -1,0 +1,154 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo);
+
+body {
+	background-color: #5ACEB6;
+	font-family: 'Arvo';
+	padding: 30px 0;
+	overflow-x:hidden;
+}
+
+h1 {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+form {text-align: center;}
+
+input[type='text']{
+	width: 350px;
+	padding: 5px;
+}
+
+br {clear: both;}
+
+input[type='submit']{
+	padding: 5px;
+}
+
+h2 > img {
+	width: 65px;
+	height: 65px;
+}
+
+.encabezado {
+	font-size: 6em;
+	margin: 100px 0 80px;
+	width: 100%;
+}
+
+.barra-superior {
+}
+
+.encabezado-barra {
+    font-size: 4em;
+    width: 100%;
+    text-align: center;
+}
+
+	.encabezado-barra > a{
+		color: black;
+	}
+
+	.encabezado-barra > a:hover, .encabezado-barra > a:active, .encabezado-barra > a:focus {
+		color: black;
+		text-decoration: none;
+	}
+
+.formulario-barra {
+	width: 100%;
+	text-align: center;
+    margin: 12px 0 10px;
+}
+
+	.formulario-barra > form {text-align: left;}
+
+	.formulario-barra > input[type='text']{
+		width: 80%;
+		padding: 5px;
+	}
+
+	.formulario-barra input[type='submit']{
+		padding: 5px;
+	}
+
+.resultado {
+	background-color: white;
+	padding: 50px 0;
+}
+
+
+.perfiles {
+	width: 100%;
+	padding: 20px 0;
+}
+
+.perfiles > a > li {
+	float: left;
+	width: 20%;
+	list-style: none;
+	text-align: center;
+	height: 100px;
+	margin: 20px 0;
+}
+
+	.perfiles > a > li > img {
+		width: 70px;
+		height: 65px;
+		margin: 0 22%;
+	}
+
+	.perfiles > a > li > div { text-transform: capitalize; }
+
+.partidos {
+	width: 90%;
+	padding: 10px 5%;
+}
+
+.partidos > li {
+	margin: 30px 0;
+	list-style: none;
+	text-align: left;
+	text-transform: capitalize;
+}
+
+.titulo {text-align: left;}
+
+.mensaje {
+	margin: 20px 0 0;
+	text-align: left;
+	color: #2377D1;
+}
+
+
+.is-green {color: #0DA574}
+.is-red {color: #FF7676}
+.is-yellow {color: #FCDA05}
+
+.titulo-equipo {text-transform: capitalize;}
+
+
+
+@media only screen and (max-width:660px){
+
+	.perfiles > a > li { width: 30%;}
+}
+
+
+@media only screen and (max-width: 480px){
+	.encabezado {
+		font-size: 4em;
+		margin: 80px 0;
+	}
+
+	.encabezado-barra {font-size: 3em;}
+
+	.formulario-barra > input[type='text']{
+		width: 60%;
+	}
+
+	input[type='text']{
+		width: 70%;
+	}
+
+	.perfiles > a > li { width: 50%;}
+}

@@ -1,0 +1,17 @@
+{% extends 'main.twig' %}
+{% block content %}
+<div class='container barra-superior'>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3">
+			<h1 class='encabezado-barra'><a href='{{ rutaBase }}'>Buscador</a></h1>
+			<form class='formulario-barra' method='GET' action='{{rutaBase}}buscar/index.php'>
+				<input type='text' name="busqueda" value="{{ busqueda }}">
+				<input type='submit' value='BUSCAR'>
+			</form>
+			<br />
+		</div>
+	</div>
+</div>
+	{% block contentido %}
+  	{% endblock contentido %}
+{% endblock content %}

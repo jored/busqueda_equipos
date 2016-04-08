@@ -1,0 +1,66 @@
+{% extends 'barra-superior.twig' %}
+{% block contentido %}
+<div class='container-fluid resultado'>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3">
+				<h1 class='titulo'>Resultados:</h1>
+				{% if respuesta.resultado == true %}
+					{% if (respuesta.liga_unica == false) and (respuesta.comparacion_partidos == true) %}
+						<h5 class='mensaje'>Algunos equipos no pertenecen a la misma liga.</h5>
+					{% endif %}
+					<ul class='perfiles'>
+						{% for perfil in respuesta['perfiles'] %}
+							<a href='{{ rutaBase }}perfil/{{ perfil.identificador_l }}/{{ perfil.identificador }}'>
+								<li>
+									<img src=" {{ perfil.imagen }} ">
+									<div>{{ perfil.nombre }}</div> 
+								</li>
+							</a>
+						{% endfor %}
+						<br />
+					</ul>
+					{% if respuesta.comparacion_partidos == true %}
+						{% if respuesta.partidos|length > 0 %}
+							<h3 class="titulo">Partidos jugados:</h3>
+							<ul class='partidos'>
+							{% for partido in respuesta['partidos'] %}
+								{% if partido.ganado == 1 %}
+									{% set claseVisitante = 'is-red' %}
+								 	{% set claseLocal = 'is-green' %}
+							{% endif %}
+
+								
+
+								{% if partido.ganado == 0 %}
+								 	{% set claseVisitante = 'is-yellow' %}
+									{% set claseLocal = 'is-yellow' %}
+								{% endif %}
+
+								{% if partido.ganado == 2 %}
+								 	{% set claseVisitante = 'is-green' %}
+								 	{% set claseLocal = 'is-red' %}
+								{% endif %}
+								
+								<li>
+										<h4>
+											<a href="{{ rutaBase }}perfil/{{ partido.identificador_l }}/{{ partido.identificador_el }}">{{ partido.local }}</a>
+											<span class='{{ claseLocal }}'>{{ partido.gol_local }}</span> -- 
+											<span class='{{ claseVisitante }}'>{{ partido.gol_visitante }}</span>  
+											<a href="{{ rutaBase }}perfil/{{ partido.identificador_l }}/{{ partido.identificador_ev }}">{{partido.visitante}}</a>
+										</h4>
+									<div>Jornada {{ partido.identificador_j }}</div>
+									<div>Partido jugado el dia {{ partido.fecha_lista }} a las {{ partido.hora_lista }}</div>
+								</li>
+							{% endfor %}
+							</ul>
+						{% endif %}
+					{% endif %}
+				{% else %}
+					<h5 class='mensaje'>No se encontraron resultados.</h5>
+				{% endif %}
+			</div>
+		</div>	
+	</div>
+</div>
+{% endblock contentido %}

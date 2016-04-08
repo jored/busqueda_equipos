@@ -1,0 +1,35 @@
+{% extends 'barra-superior.twig' %}
+{% block contentido %}
+<div class='container-fluid resultado'>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3">
+				<h1 class='titulo'>Perfil del equipo:</h1>
+				{% if respuesta.resultado == true %}
+					<h2 class='titulo-equipo'><img src="{{ respuesta.perfil.imagen }}"> {{ respuesta.perfil.nombre }}</h2>
+					<h4>Informacion detallada:</h4>
+					<ul>
+						<li>Pais: {{ respuesta.perfil.pais }}</li>
+						<li>Fundacion: {{ respuesta.perfil.fundacion }}</li>
+						<li>Presidente Actual: {{ respuesta.perfil.entrandor }}</li>
+						<li>Entrenador Actual: {{ respuesta.perfil.presidente }}</li>
+						<li>Pagina Web: <a href="http://{{ respuesta.perfil.web }}">{{ respuesta.perfil.web }}</a></br></li>
+						<li>Perfil en As.com: <a href="{{ respuesta.perfil.perfil }}">{{ respuesta.perfil.nombre }}</a></li>
+					</ul>
+					<h4>Temporada 2013-2014:</h4>
+					<ul>
+						<li>Partidos Jugados: {{ respuesta.temporada.local.partidos_l +  respuesta.temporada.visitante.partidos_v }}</li>
+						<li>Partidos Ganados: {{ respuesta.temporada.local.tp_ganados +  respuesta.temporada.visitante.tp_ganados }}</li>
+						<li>Partidos Empatados: {{ respuesta.temporada.local.tp_empate +  respuesta.temporada.visitante.tp_empate }}</li>
+						<li>Partidos Perdidos: {{ (respuesta.temporada.local.partidos_l +  respuesta.temporada.visitante.partidos_v) - (respuesta.temporada.local.tp_ganados +  respuesta.temporada.visitante.tp_ganados + respuesta.temporada.local.tp_empate +  respuesta.temporada.visitante.tp_empate) }}</li>
+						<li>Goles a Favor: {{ respuesta.temporada.local.gol_local +  respuesta.temporada.visitante.gol_visitante }}</li>
+						<li>Goles en Contra: {{ respuesta.temporada.local.gol_localE +  respuesta.temporada.visitante.gol_visitanteE }}</li>
+					</ul>
+				{% else %}
+					<h5 class='mensaje'>La informacion del equipo no se encuentra disponible.</h5>
+				{% endif %}
+			</div>
+		</div>	
+	</div>
+</div>
+{% endblock contentido %}
